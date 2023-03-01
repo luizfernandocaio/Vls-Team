@@ -1,67 +1,60 @@
 <?php
-
-// Check PHP version.
-$minPhpVersion = '7.4'; // If you update this, don't forget to update `spark`.
-if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
-    $message = sprintf(
-        'Your PHP version must be %s or higher to run CodeIgniter. Current version: %s',
-        $minPhpVersion,
-        PHP_VERSION
-    );
-
-    exit($message);
-}
-
-// Path to the front controller (this file)
-define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
-
-// Ensure the current directory is pointing to the front controller's directory
-chdir(FCPATH);
-
-/*
- *---------------------------------------------------------------
- * BOOTSTRAP THE APPLICATION
- *---------------------------------------------------------------
- * This process sets up the path constants, loads and registers
- * our autoloader, along with Composer's, loads our constants
- * and fires up an environment-specific bootstrapping.
+/**
+ * Created by PhpStorm.
+ * User: lucas genari
+ * Date: 28/08/2018
+ * Time: 16:56
  */
+?>
 
-// Load our paths config file
-// This is the line that might need to be changed, depending on your folder structure.
-require FCPATH . '../app/Config/Paths.php';
-// ^^^ Change this line if you move your application folder
+<section class="page-content">
+    <div class="container">
 
-$paths = new Config\Paths();
+        <div class="row">
+            <div class="col-md-12">
+                <img src="assets/images/background.jpg" style="width: 100%;">
+            </div>
 
-// Location of the framework bootstrap file.
-require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
+            <hr>
 
-// Load environment settings from .env files into $_SERVER and $_ENV
-require_once SYSTEMPATH . 'Config/DotEnv.php';
-(new CodeIgniter\Config\DotEnv(ROOTPATH))->load();
+            <div class="col-md-12" style="margin-top: 35px; color: #86817D">
 
-/*
- * ---------------------------------------------------------------
- * GRAB OUR CODEIGNITER INSTANCE
- * ---------------------------------------------------------------
- *
- * The CodeIgniter class contains the core functionality to make
- * the application run, and does all of the dirty work to get
- * the pieces all working together.
- */
+                <?php if($this->session->flashdata("success")) : ?>
+                    <p class="alert alert-success"><?= $this->session->flashdata("success") ?></p>
+                <?php endif ?>
 
-$app = Config\Services::codeigniter();
-$app->initialize();
-$context = is_cli() ? 'php-cli' : 'web';
-$app->setContext($context);
+                <?php if($this->session->flashdata("danger")) : ?>
+                    <p class="alert alert-danger"><?= $this->session->flashdata("danger") ?></p>
+                <?php endif ?>
 
-/*
- *---------------------------------------------------------------
- * LAUNCH THE APPLICATION
- *---------------------------------------------------------------
- * Now that everything is setup, it's time to actually fire
- * up the engines and make this app do its thang.
- */
+                <div class="jumbotron" style="background-color: #1B1D1D;">
+                    <h1 class="display-4">Hello, pessoas!</h1>
+                    <p class="lead">Esta é uma simples página apenas para treinar as habilidades do desenvolvimento web. Estamos utilizando HTML5, Bootstrap 4, Framework CodeIgniter e PHP.</p>
+                    <hr class="my-4" style="background-color: #e6e6e6">
+                    <p>Vls-team WOW.</p>
+                    <a class="btn btn-danger btn-lg" href="herois" role="button">Todos Heróis</a>
+                </div>
+            </div>
 
-$app->run();
+            <hr>
+
+            <div class="col-md-12">
+                <h1 style="text-align: center; margin-bottom: 30px; color: #86817D">Personagens</h1>
+                <div class="row clearfix" style="text-align: justify">
+                    <?php foreach ($destaques as $destaque) : ?>
+                        <div class="col-md-3" style="margin-bottom: 20px;">
+                            <div class="card personagem" style="background-color: #1B1D1D; color: #86817D">
+                                <img class="card-img-top" src="<?= $destaque['nome_imagem'] ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $destaque['nome'] ?></h5>
+                                    <p class="card-text"><?= character_limiter($destaque['biografia'], 100) ?></p>
+                                    <a href="#" class="btn btn-danger">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

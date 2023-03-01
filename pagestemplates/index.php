@@ -31,7 +31,7 @@
                     <h1 class="display-4">Hello, pessoas!</h1>
                     <p class="lead">Esta é uma simples página apenas para treinar as habilidades do desenvolvimento web. Estamos utilizando HTML5, Bootstrap 4, Framework CodeIgniter e PHP.</p>
                     <hr class="my-4" style="background-color: #e6e6e6">
-                    <p>Todas informações imagens usadas aqui são de direitos dos criadores do Dota 2.</p>
+                    <p>Vls-team WOW.</p>
                     <a class="btn btn-danger btn-lg" href="herois" role="button">Todos Heróis</a>
                 </div>
             </div>
@@ -39,19 +39,19 @@
             <hr>
 
             <div class="col-md-12">
-                <h1 style="text-align: center; margin-bottom: 30px; color: #86817D">Últimos Personagens</h1>
+                <h1 style="text-align: center; margin-bottom: 30px; color: #86817D">Personagens</h1>
                 <div class="row clearfix" style="text-align: justify">
                     <?php foreach ($destaques as $destaque) : ?>
-                    <div class="col-md-3" style="margin-bottom: 20px;">
-                        <div class="card personagem" style="background-color: #1B1D1D; color: #86817D">
-                            <img class="card-img-top" src="assets/images/herois/<?= $destaque['nome_imagem'] ?>" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $destaque['nome'] ?></h5>
-                                <p class="card-text"><?= character_limiter($destaque['biografia'], 100) ?></p>
-                                <a href="#" class="btn btn-danger">Go somewhere</a>
+                        <div class="col-md-3" style="margin-bottom: 20px;">
+                            <div class="card personagem" style="background-color: #1B1D1D; color: #86817D">
+                                <img class="card-img-top" src="<?= $destaque['nome_imagem'] ?>" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $destaque['nome'] ?></h5>
+                                    <p class="card-text"><?= character_limiter($destaque['biografia'], 100) ?></p>
+                                    <a href="#" class="btn btn-danger">Go somewhere</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
