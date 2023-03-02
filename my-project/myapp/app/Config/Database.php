@@ -32,8 +32,8 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => '',
+        'hostname' => 'mariadb',
+        'username' => 'bn_myapp',
         'password' => '',
         'database' => '',
         'DBDriver' => 'MySQLi',
