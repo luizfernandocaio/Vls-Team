@@ -1,0 +1,32 @@
+{
+	"folders": {},
+	"connections": {
+		"mariaDB-1869ed7d6c8-64faaa08c3540fb2": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "bitnami_myapp",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "bitnami_myapp",
+				"url": "jdbc:mariadb://localhost:3306/bitnami_myapp",
+				"configurationType": "MANUAL",
+				"home": "mysql_client",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
